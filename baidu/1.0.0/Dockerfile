@@ -28,6 +28,7 @@ RUN unzip chromedriver_linux64.zip
 RUN chmod +x /usr/bin/chromedriver
 
 RUN mkdir install
+RUN cd install
 RUN wget http://yum.baseurl.org/download/3.2/yum-3.2.28.tar.gz
 RUN tar -xvf yum-3.2.28.tar.gz
 RUN touch /etc/yum.conf
