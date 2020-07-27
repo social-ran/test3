@@ -12,7 +12,7 @@ RUN mkdir /install
 WORKDIR /install
 COPY requirements.txt /requirements.txt
 RUN pip install --prefix="/install" -r /requirements.txt
-RUN pip3 install selenium
+RUN pip install selenium
 # Switch back to our base image and copy in all of our built packages and source code
 FROM base
 COPY --from=builder /install /usr/local
