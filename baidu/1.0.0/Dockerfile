@@ -21,12 +21,22 @@ COPY --from=builder /install /usr/local
 COPY src /app
 
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple selenium
-RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple wget
 RUN wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
-COPY /Users/apple/chromedriver_linux64.zip /usr/bin
+RUN cp ./chromedriver_linux64.zip /usr/bin
 RUN cd /usr/bin
 RUN unzip chromedriver_linux64.zip
 RUN chmod +x /usr/bin/chromedriver
+
+RUN mkdir install
+RUN wget http://yum.baseurl.org/download/3.2/yum-3.2.28.tar.gz
+RUN tar -xvf yum-3.2.28.tar.gz
+RUN touch /etc/yum.conf
+RUN cd yum-3.2.28
+RUN ./yummain.py install yum
+RUN yum -y install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+
+
+
 # Install any binary dependencies needed in our final image
 # RUN apk --no-cache add --update my_binary_dependency
 
