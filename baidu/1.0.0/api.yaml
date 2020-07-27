@@ -1,5 +1,5 @@
 app_version: 1.0.0
-name: Sayhello
+name: baidu
 description: Debugging app for Shuffle
 
 contact_info:
@@ -9,7 +9,7 @@ contact_info:
 
 
 actions:
-  - name: baidu
+  - name: openweb
     description: baidu search
     parameters:
       - name: url
