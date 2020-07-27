@@ -17,9 +17,15 @@ class baidu(AppBase):
             mystr = "no selenium"
             return mystr
         option = webdriver.ChromeOptions()
-        option.add_argument('--user-data-dir=/Users/apple/Library/Application Support/Google/Chrome/Default')
+        # option.add_argument('--user-data-dir=/Users/apple/Library/Application Support/Google/Chrome/Default')
+        option.add_argument('--headless')
+        option.add_argument('--no-sandbox')
+        option.add_argument('--disable-gpu')
+        option.add_argument('--disable-dev-shm-usage')
+        option.add_argument("--headless")
         browser = webdriver.Chrome(chrome_options=option)
-        browser.get(url)
+        # browser=webdriver.Chrome()
+        browser.get("http://www.baidu.com")
         browser.maximize_window()
 
         browser.find_element_by_id("kw").send_keys(content)
