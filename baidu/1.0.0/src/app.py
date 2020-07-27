@@ -12,9 +12,7 @@ class baidu(AppBase):
         super().__init__(redis, logger, console_logger)
 
     async def openweb(self, url, content):
-        option = webdriver.ChromeOptions()
-        option.add_argument('--user-data-dir=/Users/apple/Library/Application Support/Google/Chrome/Default')
-        browser = webdriver.Chrome(chrome_options=option)
+        browser = webdriver.Chrome()
         browser.get(url)
         browser.maximize_window()
 
