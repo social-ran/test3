@@ -23,7 +23,7 @@ actions:
         description: The message to search
         required: true
         multiline: true
-        example: "男性功能障碍"
+        example: "百度一下，全是广告"
         schema:
           type: string
     returns:
