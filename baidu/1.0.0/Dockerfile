@@ -13,8 +13,9 @@ RUN mkdir /install
 WORKDIR /install
 COPY requirements.txt /requirements.txt
 
-RUN pip install selenium
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple selenium
 RUN pip install --prefix="/install" -r /requirements.txt
+
 RUN yum -y install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 RUN wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
 RUN cp ./chromedriver_linux64.zip /usr/bin
