@@ -1,6 +1,12 @@
-import asyncio
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+try:
+    import asyncio
+except:
+    print("no asyncio")
+try:
+    from selenium import webdriver
+    from selenium.webdriver.common.keys import Keys
+except:
+    print("no selenium")
 from walkoff_app_sdk.app_base import AppBase
 
 class baidu(AppBase):
@@ -12,7 +18,9 @@ class baidu(AppBase):
         super().__init__(redis, logger, console_logger)
 
     async def openweb(self, url, content):
-        browser = webdriver.Chrome()
+        option = webdriver.ChromeOptions()
+        option.add_argument('--user-data-dir=/Users/apple/Library/Application Support/Google/Chrome/Default')
+        browser = webdriver.Chrome(chrome_options=option)
         browser.get(url)
         browser.maximize_window()
 
