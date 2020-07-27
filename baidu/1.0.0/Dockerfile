@@ -21,7 +21,7 @@ COPY --from=builder /install /usr/local
 COPY src /app
 
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple selenium
-RUN pip install wget
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple wget
 RUN wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
 COPY /Users/apple/chromedriver_linux64.zip /usr/bin
 RUN cd /usr/bin
