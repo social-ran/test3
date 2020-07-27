@@ -10,8 +10,16 @@ RUN apk --no-cache add --update alpine-sdk libffi libffi-dev musl-dev openssl-de
 # Install all of our pip packages in a single directory that we can copy to our base image later
 RUN mkdir /install
 WORKDIR /install
+COPY /usr/local/bin/chromedriver
 COPY requirements.txt /requirements.txt
+RUN pip install selenium
 RUN pip install --prefix="/install" -r /requirements.txt
+RUN yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+RUN wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
+RUN cp ./chromedriver_linux64.zip /usr/bin
+RUN cd /usr/bin
+RUN unzip chromedriver_linux64.zip
+RUN chmod +x /usr/bin/chromedriver
 
 # Switch back to our base image and copy in all of our built packages and source code
 FROM base
@@ -20,8 +28,7 @@ COPY src /app
 
 # Install any binary dependencies needed in our final image
 # RUN apk --no-cache add --update my_binary_dependency
-RUN pip install pymysql - i https://pypi.tuna.tsinghua.edu.cn/simple/
-RUN pip install selenium - i https://pypi.tuna.tsinghua.edu.cn/simple/
+
 # Finally, lets run our app!
 WORKDIR /app
 CMD python app.py --log-level DEBUG
