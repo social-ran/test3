@@ -20,12 +20,12 @@ actions:
         schema:
           type: string
       - name: content
-          description: The message to search
-          required: true
-          multiline: true
-          example: "男性功能障碍"
-          schema:
-            type: string
+        description: The message to search
+        required: true
+        multiline: true
+        example: "男性功能障碍"
+        schema:
+          type: string
     returns:
       schema:
         type: string
