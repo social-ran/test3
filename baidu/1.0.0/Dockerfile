@@ -12,7 +12,7 @@ RUN mkdir /install
 WORKDIR /install
 COPY requirements.txt /requirements.txt
 RUN pip install --prefix="/install" -r /requirements.txt
-RUN pip install selenium
+
 # Switch back to our base image and copy in all of our built packages and source code
 FROM base
 COPY --from=builder /install /usr/local
@@ -20,7 +20,7 @@ COPY src /app
 
 # Install any binary dependencies needed in our final image
 # RUN apk --no-cache add --update my_binary_dependency
-
+RUN pip install selenium
 # Finally, lets run our app!
 WORKDIR /app
 CMD python app.py --log-level DEBUG
