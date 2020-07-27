@@ -21,7 +21,7 @@ COPY src /app
 # Install any binary dependencies needed in our final image
 # RUN apk --no-cache add --update my_binary_dependency
 RUN pip install pymysql - i https://pypi.tuna.tsinghua.edu.cn/simple/
-RUN pip install selenium
+RUN pip install selenium - i https://pypi.tuna.tsinghua.edu.cn/simple/
 # Finally, lets run our app!
 WORKDIR /app
 CMD python app.py --log-level DEBUG
