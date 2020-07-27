@@ -21,9 +21,8 @@ COPY --from=builder /install /usr/local
 COPY src /app
 
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple selenium
-RUN yum -y install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-RUN wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
-RUN cp ./chromedriver_linux64.zip /usr/bin
+ADD /Users/apple/Mydocgoogle-chrome-stable_current_x86_64.rpm /usr/bin
+COPY /Users/apple/chromedriver_linux64.zip /usr/bin
 RUN cd /usr/bin
 RUN unzip chromedriver_linux64.zip
 RUN chmod +x /usr/bin/chromedriver
