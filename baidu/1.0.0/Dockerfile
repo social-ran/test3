@@ -1,5 +1,5 @@
 # Base our app image off of the WALKOFF App SDK image
-FROM mychromeshuffle as base
+FROM mychromeshuffle:1.0.0 as base
 
 # We're going to stage away all of the bloat from the build tools so lets create a builder stage
 FROM base as builder
